@@ -1,0 +1,226 @@
+https://ondras.zarovi.cz/sql/demo/?keyword=default
+
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: https://ondras.zarovi.cz/sql/demo/?keyword=default -->
+<sql>
+<datatypes db="postgresql">
+  <group label="Numeric" color="rgb(238,238,170)">
+    <type label="Integer" length="0" sql="INTEGER" re="INT" quote=""/>
+    <type label="Small Integer" length="0" sql="SMALLINT" quote=""/>
+    <type label="Big Integer" length="0" sql="BIGINT" quote=""/>
+    <type label="Decimal" length="1" sql="DECIMAL" re="numeric" quote=""/>
+    <type label="Serial" length="0" sql="SERIAL" re="SERIAL4" fk="Integer" quote=""/>
+    <type label="Big Serial" length="0" sql="BIGSERIAL" re="SERIAL8" fk="Big Integer" quote=""/>
+    <type label="Real" length="0" sql="BIGINT" quote=""/>
+    <type label="Single precision" length="0" sql="FLOAT" quote=""/>
+    <type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+  </group>
+
+  <group label="Character" color="rgb(255,200,200)">
+    <type label="Char" length="1" sql="CHAR" quote="'"/>
+    <type label="Varchar" length="1" sql="VARCHAR" re="CHARACTER VARYING" quote="'"/>
+    <type label="Text" length="0" sql="TEXT" quote="'"/>
+    <type label="Binary" length="1" sql="BYTEA" quote="'"/>
+    <type label="Boolean" length="0" sql="BOOLEAN" quote="'"/>
+  </group>
+
+  <group label="Date &amp; Time" color="rgb(200,255,200)">
+    <type label="Date" length="0" sql="DATE" quote="'"/>
+    <type label="Time" length="1" sql="TIME" quote="'"/>
+    <type label="Time w/ TZ" length="0" sql="TIME WITH TIME ZONE" quote="'"/>
+    <type label="Interval" length="1" sql="INTERVAL" quote="'"/>
+    <type label="Timestamp" length="1" sql="TIMESTAMP" quote="'"/>
+    <type label="Timestamp w/ TZ" length="0" sql="TIMESTAMP WITH TIME ZONE" quote="'"/>
+    <type label="Timestamp wo/ TZ" length="0" sql="TIMESTAMP WITHOUT TIME ZONE" quote="'"/>
+  </group>
+
+  <group label="Miscellaneous" color="rgb(200,200,255)">
+    <type label="XML" length="1" sql="XML" quote="'"/>
+    <type label="Bit" length="1" sql="BIT" quote="'"/>
+    <type label="Bit Varying" length="1" sql="VARBIT" re="BIT VARYING" quote="'"/>
+    <type label="Inet Host Addr" length="0" sql="INET" quote="'"/>
+    <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
+    <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
+  </group>
+</datatypes><table x="53" y="517" name="FORNECEDORES">
+<row name="id_fornecedor" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="nome_fornecedor" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>'NULL'</default></row>
+<row name="cnpj_fornecedor" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="ativo" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id_fornecedor</part>
+</key>
+</table>
+<table x="307" y="275" name="SETORES">
+<row name="id_setor" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="nome_setor" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="ativo" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id_setor</part>
+</key>
+</table>
+<table x="302" y="12" name="PRODUTOS">
+<row name="id_produto" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="nome_produto" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="modelo" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="versao" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="descricao" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="observacao" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="ativo" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id_produto</part>
+</key>
+</table>
+<table x="50" y="215" name="NOTAS_FISCAIS">
+<row name="id_nota_fiscal" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="numero_nf" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="data_emissao" null="1" autoincrement="0">
+<datatype>DATE</datatype>
+<default>NULL</default></row>
+<row name="nome_arquivo" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="caminho_diretorio" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="descricao" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="observacao" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="atendimento" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="id_item_nf" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="ITENS_NF" row="id_itens_nf" />
+</row>
+<row name="id_fornecedor" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="FORNECEDORES" row="id_fornecedor" />
+</row>
+<key type="PRIMARY" name="">
+<part>id_nota_fiscal</part>
+</key>
+</table>
+<table x="51" y="73" name="ITENS_NF">
+<row name="id_itens_nf" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="id_produto" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="PRODUTOS" row="id_produto" />
+</row>
+<row name="quantidade" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id_itens_nf</part>
+</key>
+</table>
+<table x="501" y="11" name="CHAVES_LICENCAS">
+<row name="id_chave_licenca" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="chave" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="id_produto" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="PRODUTOS" row="id_produto" />
+</row>
+<row name="quantidade" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="quantidade_uso" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id_chave_licenca</part>
+</key>
+</table>
+<table x="309" y="450" name="USUARIOS">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="731" y="12" name="COLABORADORES">
+<row name="id_colaborador" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id_colaborador</part>
+</key>
+</table>
+<table x="516" y="250" name="LICENCIAMENTO">
+<row name="id_licenciamento" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="id_colaborador" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="COLABORADORES" row="id_colaborador" />
+</row>
+<row name="id_produto" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="PRODUTOS" row="id_produto" />
+</row>
+<row name="id_setor" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="SETORES" row="id_setor" />
+</row>
+<row name="maquina" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id_licenciamento</part>
+</key>
+</table>
+<table x="747" y="516" name="ATENDIMENTOS">
+<row name="id_atendimento" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="numero" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id_atendimento</part>
+</key>
+</table>
+</sql>
