@@ -43,7 +43,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="53" y="517" name="FORNECEDORES">
+</datatypes><table x="61" y="414" name="FORNECEDORES">
 <row name="id_fornecedor" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -60,7 +60,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id_fornecedor</part>
 </key>
 </table>
-<table x="307" y="275" name="SETORES">
+<table x="251" y="229" name="SETORES">
 <row name="id_setor" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -74,7 +74,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id_setor</part>
 </key>
 </table>
-<table x="302" y="12" name="PRODUTOS">
+<table x="251" y="13" name="PRODUTOS">
 <row name="id_produto" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -100,7 +100,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id_produto</part>
 </key>
 </table>
-<table x="50" y="215" name="NOTAS_FISCAIS">
+<table x="61" y="131" name="NOTAS_FISCAIS">
 <row name="id_nota_fiscal" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -137,7 +137,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id_nota_fiscal</part>
 </key>
 </table>
-<table x="51" y="73" name="ITENS_NF">
+<table x="67" y="11" name="ITENS_NF">
 <row name="id_itens_nf" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -152,7 +152,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id_itens_nf</part>
 </key>
 </table>
-<table x="501" y="11" name="CHAVES_LICENCAS">
+<table x="441" y="12" name="CHAVES_LICENCAS">
 <row name="id_chave_licenca" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -173,7 +173,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id_chave_licenca</part>
 </key>
 </table>
-<table x="309" y="450" name="USUARIOS">
+<table x="274" y="397" name="USUARIOS">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -181,7 +181,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id</part>
 </key>
 </table>
-<table x="731" y="12" name="COLABORADORES">
+<table x="666" y="15" name="COLABORADORES">
 <row name="id_colaborador" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -189,7 +189,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id_colaborador</part>
 </key>
 </table>
-<table x="516" y="250" name="LICENCIAMENTO">
+<table x="448" y="184" name="LICENCIAMENTO">
 <row name="id_licenciamento" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -208,11 +208,18 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <row name="maquina" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
+<row name="tipo_maquina" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="id_ativacao" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="ATIVACAO" row="id_ativacao" />
+</row>
 <key type="PRIMARY" name="">
 <part>id_licenciamento</part>
 </key>
 </table>
-<table x="747" y="516" name="ATENDIMENTOS">
+<table x="675" y="227" name="ATENDIMENTOS">
 <row name="id_atendimento" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -221,6 +228,18 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id_atendimento</part>
+</key>
+</table>
+<table x="674" y="114" name="ATIVACAO">
+<row name="id_ativacao" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="id_atendimento" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="ATENDIMENTOS" row="id_atendimento" />
+</row>
+<key type="PRIMARY" name="">
+<part>id_ativacao</part>
 </key>
 </table>
 </sql>
