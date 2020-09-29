@@ -11,6 +11,17 @@
 		},
 		{
 			"path": "zuul-server"
+		},
+		{
+			"name": "notafiscal-ms",
+			"path": "notafiscal-ms"
+		},
+		{
+			"name": "licenca-ms",
+			"path": "licenca-ms"
 		}
-	]
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
 }
