@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header style="margin-bottom: 50px; background-color: white">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Registro</a>
+      </li>
+    </ul>
+  </header>
+
+
+  <div class="container" id="container">
+
+      <form>
+
+      <input type="text" style="margin-bottom: 4px;" class="form-control" id="Login" aria-describedby="SeuLogin" placeholder="Digite somente o seu login (ex: Joao.uca)">
+
+      <input type="text" style="margin-bottom: 4px;" class="form-control" id="Codigo" aria-describedby="Codigo" placeholder="Digite somente o código do fornecedor">
+
+      <input type="text" style="margin-bottom: 4px;" class="form-control" id="Nome" aria-describedby="Nome" placeholder="Digite somente o nome do fornecedor">
+
+      <input type="text" style="margin-bottom: 4px;" class="form-control" id="CNPJ" aria-describedby="CNPJ" placeholder="Digite somente o cnpj do fornecedor">
+
+      <div class="form-group">
+        <div class="card">
+          <div class="card-body" id="BotaoSimNao">
+            <p>O fornecedor está ativo?</p>
+            <div class="form-check">
+              <input class="form-check-input" name="AtivoSimNao" type="radio" value="AtivoSim" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Sim
+                </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" name="AtivoSimNao" type="radio" value="AtivoNao" id="defaultCheck2">
+                <label class="form-check-label" for="defaultCheck2">
+                  Não
+                </label>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <br>
+
+      <button type="button" id="Envio" class="btn btn-primary btn-lg btn-block" onclick="EnviaForm()">Enviar</button>
+    </form>
+  </div>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+
+  <script>
+    function EnviaForm() {
+      var AtivoSimNao = document.getElementById('defaultCheck1').checked;
+      if (AtivoSimNao == true) {
+        var AtivoSimNao = 'AtivoSim';
+      } else {
+        var AtivoSimNao = 'AtivoNao';
+      }
+      
+      var Login = document.getElementById('Login').value;
+      var Codigo = document.getElementById('Codigo').value;
+      var Nome = document.getElementById('Nome').value;
+      var CNPJ = document.getElementById('CNPJ').value;
+
+      var botao = document.getElementById('Envio');
+     
+      $.ajax({
+        type: 'POST',
+        url: '/fornecedoresbackend',
+        data: {
+          'AtivoSimNao': AtivoSimNao,
+          'Login': Login,
+          'Codigo': Codigo,
+          'Nome': Nome,
+          'CNPJ': CNPJ
+        },
+        success: function() {
+          if(!alert('Sucesso! POST enviado ao backend e retornado com sucesso.')){window.location.reload();}
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
