@@ -1,6 +1,6 @@
-package br.com.alterdata.fornecedorms.dto;
+package br.com.alterdata.fornecedorms.view.model;
 
-public class FornecedorDto {
+public class FornecedorModeloResponse {
     private Integer idFornecedor;
     private Integer codigoFornecedor;
     private String nomeFornecedor;
@@ -46,6 +46,5 @@ public class FornecedorDto {
     public void setAtivo(Integer ativo) {
         this.ativo = ativo;
     }
-
     
 }
