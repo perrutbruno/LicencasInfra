@@ -6,7 +6,9 @@ import br.com.alterdata.fornecedorms.dto.FornecedorDto;
 
 public interface FornecedorService {
 
-	FornecedorDto cadastrarFornecedor(FornecedorDto dto);
+    FornecedorDto cadastrarFornecedor(FornecedorDto dto);
+    
+    FornecedorDto alterarFornecedor(Integer id, FornecedorDto dto);
 
 	List<FornecedorDto> obterTodos();
     
