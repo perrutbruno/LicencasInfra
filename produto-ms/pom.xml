@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.alterdata</groupId>
-	<artifactId>notafiscal-ms</artifactId>
+	<artifactId>produto-ms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>notafiscal-ms</name>
+	<name>produto-ms</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -78,18 +78,6 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<build>
 		<plugins>

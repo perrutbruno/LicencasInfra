@@ -5,6 +5,8 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Producer;
+
 @Embeddable
 public class ItensNfId implements Serializable{
     private static final long serialVersionUID = 1L;
@@ -15,7 +17,7 @@ public class ItensNfId implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "id_produto", referencedColumnName = "id_produto")
-    private Produto produto;
+    private Producer produto;
 
     //#region Get / Set
     public NotaFiscal getNotaFiscal() {

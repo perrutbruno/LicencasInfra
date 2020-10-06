@@ -17,8 +17,12 @@
 			"path": "notafiscal-ms"
 		},
 		{
-			"name": "licenca-ms",
-			"path": "licenca-ms"
+			"name": "produto-ms",
+			"path": "produto-ms"
+		},
+		{
+			"name": "fornecedor-ms",
+			"path": "fornecedor-ms"
 		}
 	],
 	"settings": {
