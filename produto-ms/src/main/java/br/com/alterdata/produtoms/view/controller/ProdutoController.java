@@ -26,7 +26,7 @@ public class ProdutoController {
     private ProdutoService service;
 
     @PostMapping
-    public ResponseEntity<ProdutoModeloResponse> criarAnimal(@RequestBody @Valid ProdutoModeloResponse produto) {
+    public ResponseEntity<ProdutoModeloResponse> criarProduto(@RequestBody @Valid ProdutoModeloResponse produto) {
         ModelMapper mapper = new ModelMapper();
         ProdutoDto dto = mapper.map(produto, ProdutoDto.class);
         dto = service.cadastrarProduto(dto);

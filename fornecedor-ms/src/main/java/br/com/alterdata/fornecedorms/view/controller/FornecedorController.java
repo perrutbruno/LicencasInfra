@@ -26,7 +26,7 @@ public class FornecedorController {
     private FornecedorService service;
 
     @PostMapping
-    public ResponseEntity<FornecedorModeloResponse> criarAnimal(@RequestBody @Valid FornecedorModeloResponse fornecedor) {
+    public ResponseEntity<FornecedorModeloResponse> criarFornecedor(@RequestBody @Valid FornecedorModeloResponse fornecedor) {
         ModelMapper mapper = new ModelMapper();
         FornecedorDto dto = mapper.map(fornecedor, FornecedorDto.class);
         dto = service.cadastrarFornecedor(dto);
