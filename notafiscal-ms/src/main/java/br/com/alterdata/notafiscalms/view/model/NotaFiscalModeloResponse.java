@@ -1,66 +1,25 @@
-package br.com.alterdata.notafiscalms.model;
+package br.com.alterdata.notafiscalms.view.model;
 
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import br.com.alterdata.notafiscalms.dto.Fornecedor;
+import br.com.alterdata.notafiscalms.model.ItensNotaFiscal;
 
-@Entity
-@Table(name = "notas_fiscais")
-public class NotaFiscal {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_nota_fiscal")
+public class NotaFiscalModeloResponse {
     private Integer idNotaFiscal;
-
-    @Column(name="codigo_nota_fiscal")
     private String codigoNotaFiscal; //caso seja um INVOICE pode conter caracteres não numéricos
-    
-    @Column(name="data_emissao")
     private Date dataEmissao;
-
-    @Column(name="nome_arquivo")
     private String nomeArquivo;
-
-    @Column(name="caminho_arquivo")
     private String caminhoArquivo;
-
-    @Column(name="descricao")
     private String descricao;
-
-    @Column(name="observacao")
     private String observacao;
-    
-    @Column(name="atendimento")
     private String atendimento;
-
-    @ManyToOne
-    @JoinColumn(name = "id_fornecedor", referencedColumnName = "id_fornecedor")
     private Fornecedor fornecedor;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "itens_nf"
-        , joinColumns = @JoinColumn(name = "id_nota_fiscal", referencedColumnName = "id_nota_fiscal")
-        , inverseJoinColumns = @JoinColumn(name = "id_produto", referencedColumnName = "id_produto")
-    )
     private List<ItensNotaFiscal> itens;
 
-
-    //#region Get / Set
-    public Integer getIdNotaFiscal() {
+     //#region Get / Set
+     public Integer getIdNotaFiscal() {
         return idNotaFiscal;
     }
 
@@ -140,9 +99,5 @@ public class NotaFiscal {
         this.itens = itens;
     }
 
-
-
     //#endregion
-
-
 }

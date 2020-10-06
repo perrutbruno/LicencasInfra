@@ -1,4 +1,4 @@
-package br.com.alterdata.produtoms.view.controller;
+package br.com.alterdata.notafiscalms.view.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,38 +15,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.alterdata.produtoms.dto.ProdutoDto;
-import br.com.alterdata.produtoms.service.ProdutoService;
-import br.com.alterdata.produtoms.view.model.ProdutoModeloResponse;
+import br.com.alterdata.notafiscalms.dto.NotaFiscalDto;
+import br.com.alterdata.notafiscalms.service.NotaFiscalService;
+import br.com.alterdata.notafiscalms.view.model.NotaFiscalModeloResponse;
 
 @RestController
-@RequestMapping("/api/produtos")
-public class ProdutoController {
+@RequestMapping("/api/notafiscal")
+public class NotaFiscalController {
     @Autowired
-    private ProdutoService service;
+    private NotaFiscalService service;
 
     @PostMapping
-    public ResponseEntity<ProdutoModeloResponse> criarProduto(@RequestBody @Valid ProdutoModeloResponse produto) {
+    public ResponseEntity<NotaFiscalModeloResponse> criarNotaFiscal(@RequestBody @Valid NotaFiscalModeloResponse produto) {
         ModelMapper mapper = new ModelMapper();
-        ProdutoDto dto = mapper.map(produto, ProdutoDto.class);
+        NotaFiscalDto dto = mapper.map(produto, NotaFiscalDto.class);
         dto = service.cadastrarProduto(dto);
-        return new ResponseEntity<>(mapper.map(dto, ProdutoModeloResponse.class), HttpStatus.CREATED);
+        return new ResponseEntity<>(mapper.map(dto, NotaFiscalModeloResponse.class), HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<ProdutoModeloResponse>> obterTodos() {
-        List<ProdutoDto> dtos = service.obterTodos();
+    public ResponseEntity<List<NotaFiscalModeloResponse>> obterTodos() {
+        List<NotaFiscalDto> dtos = service.obterTodos();
 
         if(dtos.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
         ModelMapper mapper = new ModelMapper();
-        List<ProdutoModeloResponse> resp = dtos.stream()
-                    .map(dto -> mapper.map(dto, ProdutoModeloResponse.class))
+        List<NotaFiscalModeloResponse> resp = dtos.stream()
+                    .map(dto -> mapper.map(dto, NotaFiscalModeloResponse.class))
                     .collect(Collectors.toList());
 
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
-
 }
