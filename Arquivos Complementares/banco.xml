@@ -109,7 +109,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id_produto</part>
 </key>
 </table>
-<table x="60" y="143" name="NOTAS_FISCAIS">
+<table x="66" y="160" name="NOTAS_FISCAIS">
 <row name="id_nota_fiscal" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="ITENS_NF" row="id_nota_fiscal" />
@@ -132,10 +132,9 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <row name="observacao" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="id_atendimento" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="ATENDIMENTOS" row="id_atendimento" />
-</row>
+<row name="atendimento" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
 <row name="id_fornecedor" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="FORNECEDORES" row="id_fornecedor" />
@@ -145,6 +144,9 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 </key>
 </table>
 <table x="67" y="11" name="ITENS_NF">
+<row name="id_item_nf" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <row name="id_nota_fiscal" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -156,8 +158,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
-<part>id_nota_fiscal</part>
-<part>id_produto</part>
+<part>id_item_nf</part>
 </key>
 </table>
 <table x="441" y="12" name="CHAVES_LICENCAS">
@@ -227,7 +228,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id_licenciamento</part>
 </key>
 </table>
-<table x="280" y="497" name="ATENDIMENTOS">
+<table x="651" y="423" name="ATENDIMENTOS">
 <row name="id_atendimento" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -238,7 +239,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id_atendimento</part>
 </key>
 </table>
-<table x="679" y="473" name="ATIVACOES">
+<table x="679" y="303" name="ATIVACOES">
 <row name="id_licenciamento" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>

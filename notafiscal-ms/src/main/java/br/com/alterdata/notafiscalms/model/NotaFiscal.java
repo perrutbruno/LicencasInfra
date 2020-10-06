@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.com.alterdata.notafiscalms.dto.Fornecedor;
@@ -50,14 +51,13 @@ public class NotaFiscal {
     @JoinColumn(name = "id_fornecedor", referencedColumnName = "id_fornecedor")
     private Fornecedor fornecedor;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "itens_nf"
         , joinColumns = @JoinColumn(name = "id_nota_fiscal", referencedColumnName = "id_nota_fiscal")
-        , inverseJoinColumns = @JoinColumn(name = "id_produto", referencedColumnName = "id_produto")
+        , inverseJoinColumns = @JoinColumn(name = "id_item_nf", referencedColumnName = "id_item_nf")
     )
     private List<ItensNotaFiscal> itens;
-
 
     //#region Get / Set
     public Integer getIdNotaFiscal() {
@@ -139,8 +139,6 @@ public class NotaFiscal {
     public void setItens(List<ItensNotaFiscal> itens) {
         this.itens = itens;
     }
-
-
 
     //#endregion
 
