@@ -3,6 +3,7 @@ package br.com.alterdata.fornecedorms.service;
 import java.util.List;
 
 import br.com.alterdata.fornecedorms.dto.FornecedorDto;
+import br.com.alterdata.fornecedorms.model.Fornecedor;
 
 public interface FornecedorService {
 
@@ -10,6 +11,8 @@ public interface FornecedorService {
     
     FornecedorDto alterarFornecedor(Integer id, FornecedorDto dto);
 
-	List<FornecedorDto> obterTodos();
+    List<FornecedorDto> obterTodos();
+    
+    Fornecedor obterPorId(Integer id, FornecedorDto dto);
     
 }

@@ -45,4 +45,11 @@ public class FornecedorServiceImpl implements FornecedorService {
             .map(fornecedor -> new ModelMapper().map(fornecedor, FornecedorDto.class))
             .collect(Collectors.toList());
     }
+
+    @Override
+    public Fornecedor obterPorId(Integer id, FornecedorDto fornecedor) {
+        Fornecedor fornecedores = repoFornecedor.getOne(id);
+
+        return fornecedores;
+    }
 }

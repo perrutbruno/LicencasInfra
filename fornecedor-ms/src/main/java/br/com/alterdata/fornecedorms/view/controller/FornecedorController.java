@@ -59,4 +59,20 @@ public class FornecedorController {
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
+    @GetMapping("/{idfornecedor}")
+    public ResponseEntity<List<FornecedorModeloResponse>> obterTodos() {
+        List<FornecedorDto> dtos = service.obterTodos();
+
+        if(dtos.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        ModelMapper mapper = new ModelMapper();
+        List<FornecedorModeloResponse> resp = dtos.stream()
+                    .map(dto -> mapper.map(dto, FornecedorModeloResponse.class))
+                    .collect(Collectors.toList());
+
+        return new ResponseEntity<>(resp, HttpStatus.OK);
+    }
+
 }
