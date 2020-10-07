@@ -1,11 +1,20 @@
 package br.com.alterdata.notafiscalms.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import br.com.alterdata.notafiscalms.dto.Produto;
 
 @Entity
 @Table(name = "itens_nf")
@@ -18,13 +27,12 @@ public class ItensNotaFiscal {
     @Column(name="id_nota_fiscal")
     private Integer idNotaFiscal;
 
-    @Column(name="id_produto")
-    private Integer idProduto;
-
     @Column(name = "quantidade")
     private Integer quantidade;
 
-    
+    @ManyToOne
+    @JoinColumn(name = "id_produto", referencedColumnName = "id_produto")
+     private Produto produtos;
 
     //#region Get / Set
    
@@ -44,14 +52,6 @@ public class ItensNotaFiscal {
         this.idNotaFiscal = idNotaFiscal;
     }
 
-    public Integer getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(Integer idProduto) {
-        this.idProduto = idProduto;
-    }
-
     public Integer getQuantidade() {
         return quantidade;
     }
@@ -60,6 +60,15 @@ public class ItensNotaFiscal {
         this.quantidade = quantidade;
     }
 
+    public Produto getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(Produto produtos) {
+        this.produtos = produtos;
+    }
+
+ 
 
     //#endregion
 
