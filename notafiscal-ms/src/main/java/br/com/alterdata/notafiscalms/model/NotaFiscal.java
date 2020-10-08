@@ -57,7 +57,7 @@ public class NotaFiscal {
         , joinColumns = @JoinColumn(name = "id_nota_fiscal", referencedColumnName = "id_nota_fiscal")
         , inverseJoinColumns = @JoinColumn(name = "id_item_nf", referencedColumnName = "id_item_nf")
     )
-    private List<ItensNotaFiscal> itens;
+    private List<ItensNotaFiscal> itens; 
 
     //#region Get / Set
     public Integer getIdNotaFiscal() {
