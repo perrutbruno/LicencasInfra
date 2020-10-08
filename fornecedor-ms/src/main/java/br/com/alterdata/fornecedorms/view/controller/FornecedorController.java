@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.alterdata.fornecedorms.dto.FornecedorDto;
+import br.com.alterdata.fornecedorms.model.Fornecedor;
 import br.com.alterdata.fornecedorms.service.FornecedorService;
 import br.com.alterdata.fornecedorms.view.model.FornecedorModeloResponse;
 
@@ -60,19 +61,13 @@ public class FornecedorController {
     }
 
     @GetMapping("/{idfornecedor}")
-    public ResponseEntity<List<FornecedorModeloResponse>> obterTodos() {
-        List<FornecedorDto> dtos = service.obterTodos();
-
-        if(dtos.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
+    public ResponseEntity<FornecedorModeloResponse> obterPorId(@RequestBody @Valid FornecedorModeloResponse fornecedor, @PathVariable Integer idfornecedor) {
         ModelMapper mapper = new ModelMapper();
-        List<FornecedorModeloResponse> resp = dtos.stream()
-                    .map(dto -> mapper.map(dto, FornecedorModeloResponse.class))
-                    .collect(Collectors.toList());
+        FornecedorDto dto = mapper.map(fornecedor, FornecedorDto.class);
 
-        return new ResponseEntity<>(resp, HttpStatus.OK);
+        Fornecedor fornecedor2 = service.obterPorId(idfornecedor, dto);
+
+        return new ResponseEntity<>(mapper.map(fornecedor2, FornecedorModeloResponse.class), HttpStatus.OK);
     }
 
 }
