@@ -5,7 +5,7 @@ import java.util.List;
 import br.com.alterdata.notafiscalms.dto.NotaFiscalDto;
 
 public interface NotaFiscalService {
-    NotaFiscalDto cadastrarProduto(NotaFiscalDto dto);
+    NotaFiscalDto cadastrarNotaFiscal(NotaFiscalDto dto);
 
 	List<NotaFiscalDto> obterTodos();
 }

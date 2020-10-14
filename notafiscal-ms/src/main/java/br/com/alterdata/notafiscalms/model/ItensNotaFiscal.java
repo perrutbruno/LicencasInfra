@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.com.alterdata.notafiscalms.dto.Produto;
@@ -24,10 +22,9 @@ public class ItensNotaFiscal {
 
     @Column(name = "quantidade")
     private Integer quantidade;
-
-    @ManyToOne
-    @JoinColumn(name = "id_produto", referencedColumnName = "id_produto")
-     private Produto produtos;
+   
+    @Column(name = "id_produto")
+     private Integer idProdutos;
 
     //#region Get / Set
    
@@ -55,13 +52,14 @@ public class ItensNotaFiscal {
         this.quantidade = quantidade;
     }
 
-    public Produto getProdutos() {
-        return produtos;
+    public Integer getIdProdutos() {
+        return idProdutos;
     }
 
-    public void setProdutos(Produto produtos) {
-        this.produtos = produtos;
+    public void setIdProdutos(Integer idProdutos) {
+        this.idProdutos = idProdutos;
     }
+
 
  
 

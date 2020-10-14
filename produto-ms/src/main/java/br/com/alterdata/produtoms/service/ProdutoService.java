@@ -9,5 +9,8 @@ public interface ProdutoService {
 	ProdutoDto cadastrarProduto(ProdutoDto dto);
 
 	List<ProdutoDto> obterTodos();
-    
+
+	List<ProdutoDto> obterProdutosNotaFiscal(List<Integer> id);
+	
+	
 }

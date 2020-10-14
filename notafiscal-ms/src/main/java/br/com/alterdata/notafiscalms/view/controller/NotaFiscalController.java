@@ -29,7 +29,7 @@ public class NotaFiscalController {
     public ResponseEntity<NotaFiscalModeloResponse> criarNotaFiscal(@RequestBody @Valid NotaFiscalModeloResponse produto) {
         ModelMapper mapper = new ModelMapper();
         NotaFiscalDto dto = mapper.map(produto, NotaFiscalDto.class);
-        dto = service.cadastrarProduto(dto);
+        dto = service.cadastrarNotaFiscal(dto);
         return new ResponseEntity<>(mapper.map(dto, NotaFiscalModeloResponse.class), HttpStatus.CREATED);
     }
 
@@ -48,4 +48,7 @@ public class NotaFiscalController {
 
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
+    
+
+    
 }

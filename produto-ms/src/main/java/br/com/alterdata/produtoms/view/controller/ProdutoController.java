@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,4 +51,19 @@ public class ProdutoController {
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
+    @GetMapping("/{idproduto}")
+    public ResponseEntity<List<ProdutoModeloResponse>> obterProdutosNotaFiscal(@RequestBody @Valid ProdutoModeloResponse produto, @PathVariable List<Integer> idproduto) {
+        List<ProdutoDto> dtos = service.obterProdutosNotaFiscal(idproduto);
+
+        if(dtos.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        ModelMapper mapper = new ModelMapper();
+        List<ProdutoModeloResponse> resp = dtos.stream()
+                    .map(dto -> mapper.map(dto, ProdutoModeloResponse.class))
+                    .collect(Collectors.toList());
+
+        return new ResponseEntity<>(resp, HttpStatus.OK);
+    }
 }
