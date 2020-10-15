@@ -1,8 +1,10 @@
 package br.com.alterdata.fornecedorms.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.hibernate.criterion.Example;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,5 +53,15 @@ public class FornecedorServiceImpl implements FornecedorService {
         Fornecedor fornecedores = repoFornecedor.getOne(id);
 
         return fornecedores;
+    }
+
+    @Override
+    public Optional<FornecedorDto> obterPorNome(String nomeFornecedor) {
+        Optional<Fornecedor> setor = repoFornecedor.findByNomeFornecedor(nomeFornecedor);
+        if(setor.isPresent()) {
+            return Optional.of(new ModelMapper().map(setor.get(), FornecedorDto.class));
+        }
+ 
+        return Optional.empty();
     }
 }

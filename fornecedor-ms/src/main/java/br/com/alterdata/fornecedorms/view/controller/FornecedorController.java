@@ -1,6 +1,7 @@
 package br.com.alterdata.fornecedorms.view.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -68,6 +69,22 @@ public class FornecedorController {
         Fornecedor fornecedor2 = service.obterPorId(idfornecedor, dto);
 
         return new ResponseEntity<>(mapper.map(fornecedor2, FornecedorModeloResponse.class), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/{fornecedor}")
+    public ResponseEntity<List<FornecedorModeloResponse>> obterPorNome(@PathVariable String fornecedor) {
+        Optional<FornecedorDto> dtos = service.obterPorNome(fornecedor);
+
+        if(dtos.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        ModelMapper mapper = new ModelMapper();
+        List<FornecedorModeloResponse> resp = dtos.stream()
+                    .map(dto -> mapper.map(dto, FornecedorModeloResponse.class))
+                    .collect(Collectors.toList());
+
+        return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
 }
