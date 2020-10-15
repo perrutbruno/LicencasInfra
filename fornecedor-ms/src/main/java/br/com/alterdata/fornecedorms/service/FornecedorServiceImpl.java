@@ -18,10 +18,10 @@ public class FornecedorServiceImpl implements FornecedorService {
 
     @Override
     public FornecedorDto cadastrarFornecedor(FornecedorDto fornecedor) {
-        return salvarProduto(fornecedor);
+        return salvarFornecedor(fornecedor);
     }
 
-    private FornecedorDto salvarProduto(FornecedorDto fornecedor) {
+    private FornecedorDto salvarFornecedor(FornecedorDto fornecedor) {
         ModelMapper mapper = new ModelMapper();
 
         Fornecedor fornecedorEntidade = mapper.map(fornecedor, Fornecedor.class);

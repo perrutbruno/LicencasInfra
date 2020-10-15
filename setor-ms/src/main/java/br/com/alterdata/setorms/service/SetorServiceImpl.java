@@ -1,6 +1,7 @@
 package br.com.alterdata.setorms.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -37,5 +38,15 @@ public class SetorServiceImpl implements SetorService {
         return setores.stream()
             .map(setor -> new ModelMapper().map(setor, SetorDto.class))
             .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<SetorDto> obterPorNome(String nomeSetor) {
+        Optional<Setor> setor = repoSetor.findByNomeSetor(nomeSetor);
+        if(setor.isPresent()) {
+            return Optional.of(new ModelMapper().map(setor.get(), SetorDto.class));
+        }
+ 
+        return Optional.empty();
     }
 }

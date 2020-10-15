@@ -1,6 +1,7 @@
 package br.com.alterdata.setorms.view.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +38,21 @@ public class SetorController {
     @GetMapping
     public ResponseEntity<List<SetorModeloResponse>> obterTodos() {
         List<SetorDto> dtos = service.obterTodos();
+
+        if (dtos.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        ModelMapper mapper = new ModelMapper();
+        List<SetorModeloResponse> resp = dtos.stream().map(dto -> mapper.map(dto, SetorModeloResponse.class))
+                .collect(Collectors.toList());
+
+        return new ResponseEntity<>(resp, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/{setor}")
+    public ResponseEntity<List<SetorModeloResponse>> obterPorDono(@PathVariable String setor) {
+        Optional<SetorDto> dtos = service.obterPorNome(setor);
 
         if(dtos.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
