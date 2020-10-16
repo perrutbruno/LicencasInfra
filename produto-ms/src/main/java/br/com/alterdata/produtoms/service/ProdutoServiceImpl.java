@@ -38,4 +38,13 @@ public class ProdutoServiceImpl implements ProdutoService {
             .map(produto -> new ModelMapper().map(produto, ProdutoDto.class))
             .collect(Collectors.toList());
     }
+
+    @Override
+    public List<ProdutoDto> obterProdutosNotaFiscal(List<Integer> id) {
+        List<Produto> produtos = repoProduto.findByIdProdutoIn(id);
+
+        return produtos.stream()
+            .map(produto -> new ModelMapper().map(produto, ProdutoDto.class))
+            .collect(Collectors.toList());
+    }
 }

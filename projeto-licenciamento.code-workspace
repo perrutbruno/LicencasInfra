@@ -23,6 +23,14 @@
 		{
 			"name": "fornecedor-ms",
 			"path": "fornecedor-ms"
+		},
+		{
+			"name": "setor-ms",
+			"path": "setor-ms"
+		},
+		{
+			"name": "chavelicenca-ms",
+			"path": "chavelicenca-ms"
 		}
 	],
 	"settings": {

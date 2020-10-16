@@ -11,9 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import br.com.alterdata.notafiscalms.dto.Fornecedor;
 
 @Entity
 @Table(name = "notas_fiscais")
@@ -41,23 +43,20 @@ public class NotaFiscal {
     @Column(name="observacao")
     private String observacao;
     
-    @ManyToOne
-    @JoinColumn(name = "id_atendimento", referencedColumnName = "id_atendimento")
-    private Atendimento atendimento;
+    @Column(name="atendimento")
+    private String atendimento;
 
     @ManyToOne
     @JoinColumn(name = "id_fornecedor", referencedColumnName = "id_fornecedor")
     private Fornecedor fornecedor;
 
-
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "itens_nf"
         , joinColumns = @JoinColumn(name = "id_nota_fiscal", referencedColumnName = "id_nota_fiscal")
-        , inverseJoinColumns = @JoinColumn(name = "id_produto", referencedColumnName = "id_produto")
+        , inverseJoinColumns = @JoinColumn(name = "id_item_nf", referencedColumnName = "id_item_nf")
     )
-    private List<ItensNotaFiscal> itens;
-
+    private List<ItensNotaFiscal> itens; 
 
     //#region Get / Set
     public Integer getIdNotaFiscal() {
@@ -116,11 +115,11 @@ public class NotaFiscal {
         this.observacao = observacao;
     }
 
-    public Atendimento getAtendimento() {
+    public String getAtendimento() {
         return atendimento;
     }
 
-    public void setAtendimento(Atendimento atendimento) {
+    public void setAtendimento(String atendimento) {
         this.atendimento = atendimento;
     }
 

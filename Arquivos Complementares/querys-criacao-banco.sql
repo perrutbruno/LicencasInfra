@@ -1,4 +1,9 @@
-/*
+INSERT INTO public.itens_nf(
+	id_nota_fiscal, quantidade, id_produto)
+	VALUES (1, 10, 1);
+	
+ALTER TABLE public.itens_nf
+    ADD COLUMN id_item_nf SERIAL CONSTRAINT pk_id_item_nf PRIMARY KEY;/*
 create table FORNECEDORES(
 id_fornecedor SERIAL CONSTRAINT pk_id_fornecedor PRIMARY KEY,
 codigo_fornecedor integer NOT NULL,
@@ -33,7 +38,9 @@ create table ITENS_NF(
 id_item_nf SERIAL CONSTRAINT pk_id_item_nf PRIMARY KEY,
 quantidade integer NOT NULL,
 id_produto integer NOT NULL,
-FOREIGN KEY (id_produto) REFERENCES produtos (id_produto) ON DELETE CASCADE);
+id_nota_fiscal integer NOT NULL,
+FOREIGN KEY (id_produto) REFERENCES produtos (id_produto) ON DELETE CASCADE,
+FOREIGN KEY (id_nota_fiscal) REFERENCES notas_fiscais (id_nota_fiscal) ON DELETE CASCADE);
 
 create table NOTAS_FISCAIS(
 id_nota_fiscal SERIAL CONSTRAINT pk_id_nota_fiscal PRIMARY KEY,
@@ -43,12 +50,9 @@ nome_arquivo varchar(150) NOT NULL,
 caminho_arquivo varchar(150) NOT NULL,
 descricao varchar(150),
 observacao varchar(150),
-id_atendimento integer NOT NULL,
-id_item_nf integer NOT NULL,
+atendimento varchar(30),
 id_fornecedor integer NOT NULL,
-FOREIGN KEY (id_atendimento) REFERENCES atendimentos (id_atendimento) ON DELETE CASCADE,
-FOREIGN KEY (id_fornecedor) REFERENCES fornecedores (id_fornecedor) ON DELETE CASCADE,
-FOREIGN KEY (id_item_nf) REFERENCES itens_nf (id_item_nf) ON DELETE CASCADE);
+FOREIGN KEY (id_fornecedor) REFERENCES fornecedores (id_fornecedor) ON DELETE CASCADE);
 
 
 create table CHAVES_LICENCAS(
