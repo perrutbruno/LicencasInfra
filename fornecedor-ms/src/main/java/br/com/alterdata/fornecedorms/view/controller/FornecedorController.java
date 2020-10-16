@@ -71,7 +71,7 @@ public class FornecedorController {
         return new ResponseEntity<>(mapper.map(fornecedor2, FornecedorModeloResponse.class), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{fornecedor}")
+    @GetMapping(value = "/nome/{fornecedor}")
     public ResponseEntity<List<FornecedorModeloResponse>> obterPorNome(@PathVariable String fornecedor) {
         Optional<FornecedorDto> dtos = service.obterPorNome(fornecedor);
 
