@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  fornecedorms:
+    image: fornecedorms
+    build: .
+    ports:
+      - 8010:8010
+      - 8012:8012
+      - 8080:8080
