@@ -5,3 +5,5 @@ EXPOSE 8010
 EXPOSE 8012
 EXPOSE 8080
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-Dspring.profiles.active=docker", "-jar", "/spring/app.jar"]
+
+#pasta target na pasta do projeto fornecedor-ms
