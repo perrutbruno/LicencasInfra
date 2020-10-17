@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:14-alpine
 VOLUME /tmp
 COPY target/fornecedor-ms*.jar /spring/app.jar
 EXPOSE 8010
