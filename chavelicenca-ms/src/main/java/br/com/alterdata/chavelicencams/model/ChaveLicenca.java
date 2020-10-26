@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import br.com.alterdata.chavelicencams.dto.Produto;
 
 @Entity
 @Table(name = "chaves_licencas")
@@ -24,10 +28,11 @@ public class ChaveLicenca {
     @Column(name = "quantidade_uso")
     private Integer qtdUso;
 
-    @Column(name = "id_produto")
-    private Integer idProduto;
+    @ManyToOne
+    @JoinColumn(name = "id_produto", referencedColumnName = "id_produto")
+    private Produto produto;
 
-    //#endregion
+     //#endregion
     public Integer getIdChaveLicenca() {
         return idChaveLicenca;
     }
@@ -60,13 +65,14 @@ public class ChaveLicenca {
         this.qtdUso = qtdUso;
     }
 
-    public Integer getIdProduto() {
-        return idProduto;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setIdProduto(Integer idProduto) {
-        this.idProduto = idProduto;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
+
 
     //#endregion
     

@@ -49,4 +49,15 @@ public class SetorServiceImpl implements SetorService {
  
         return Optional.empty();
     }
+
+    @Override
+    public Optional<SetorDto> obterPorId(Integer id) {
+        Optional<Setor> atendimento = repoSetor.findById(id);
+
+        if(atendimento.isPresent()) {
+            return Optional.of(new ModelMapper().map(atendimento.get(), SetorDto.class));
+        }
+ 
+        return Optional.empty();
+    }
 }

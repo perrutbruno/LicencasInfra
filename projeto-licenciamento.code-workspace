@@ -31,6 +31,10 @@
 		{
 			"name": "chavelicenca-ms",
 			"path": "chavelicenca-ms"
+		},
+		{
+			"name": "atendimento-ms",
+			"path": "atendimento-ms"
 		}
 	],
 	"settings": {

@@ -65,4 +65,18 @@ public class SetorController {
 
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
+
+    @GetMapping(value="/{id}")
+    public ResponseEntity<SetorModeloResponse> obterPorId(@PathVariable Integer id) {
+        Optional<SetorDto> setor = service.obterPorId(id);
+
+        if(setor.isPresent()) {
+            return new ResponseEntity<>(
+                new ModelMapper().map(setor.get(), SetorModeloResponse.class), 
+                HttpStatus.OK
+            );
+        }
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

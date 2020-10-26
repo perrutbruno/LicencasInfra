@@ -1,6 +1,7 @@
 package br.com.alterdata.chavelicencams.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -12,7 +13,7 @@ import br.com.alterdata.chavelicencams.model.ChaveLicenca;
 import br.com.alterdata.chavelicencams.repository.ChaveLicencaRepositorio;
 
 @Service
-public class ChaveLicencaServiceImpl implements ChaveLicencaService{
+public class ChaveLicencaServiceImpl implements ChaveLicencaService {
     @Autowired
     private ChaveLicencaRepositorio repoChaveLicenca;
 
@@ -24,18 +25,28 @@ public class ChaveLicencaServiceImpl implements ChaveLicencaService{
     private ChaveLicencaDto salvarChave(ChaveLicencaDto chave) {
         ModelMapper mapper = new ModelMapper();
 
-        ChaveLicenca fornecedorEntidade = mapper.map(chave, ChaveLicenca.class);
-        fornecedorEntidade = repoChaveLicenca.save(fornecedorEntidade);
+        ChaveLicenca chaveLicencaEntidade = mapper.map(chave, ChaveLicenca.class);
+        chaveLicencaEntidade = repoChaveLicenca.save(chaveLicencaEntidade);
 
-        return mapper.map(fornecedorEntidade, ChaveLicencaDto.class);
+        return mapper.map(chaveLicencaEntidade, ChaveLicencaDto.class);
     }
 
     @Override
     public List<ChaveLicencaDto> obterTodos() {
-        List<ChaveLicenca> fornecedores = repoChaveLicenca.findAll();
+        List<ChaveLicenca> chaveLicenca = repoChaveLicenca.findAll();
 
-        return fornecedores.stream()
-            .map(chave -> new ModelMapper().map(chave, ChaveLicencaDto.class))
-            .collect(Collectors.toList());
+        return chaveLicenca.stream().map(chave -> new ModelMapper().map(chave, ChaveLicencaDto.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<ChaveLicencaDto> obterPorId(Integer id) {
+        Optional<ChaveLicenca> chaveLicenca = repoChaveLicenca.findById(id);
+
+        if(chaveLicenca.isPresent()) {
+            return Optional.of(new ModelMapper().map(chaveLicenca.get(), ChaveLicencaDto.class));
+        }
+ 
+        return Optional.empty();
     }
 }
