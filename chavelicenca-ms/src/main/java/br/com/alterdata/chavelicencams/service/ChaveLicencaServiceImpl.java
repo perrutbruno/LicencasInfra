@@ -19,6 +19,7 @@ public class ChaveLicencaServiceImpl implements ChaveLicencaService {
 
     @Override
     public ChaveLicencaDto cadastrarChaveLicenca(ChaveLicencaDto chave) {
+        chave.setAtivo(1);
         return salvarChave(chave);
     }
 

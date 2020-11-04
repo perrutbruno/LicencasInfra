@@ -1,4 +1,4 @@
-package br.com.alterdata.setorms.view.controller;
+package br.com.alterdata.usuarioms.view.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,62 +18,62 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.alterdata.setorms.dto.SetorDto;
-import br.com.alterdata.setorms.service.SetorService;
-import br.com.alterdata.setorms.view.model.SetorModeloResponse;
+import br.com.alterdata.usuarioms.dto.UsuarioDto;
+import br.com.alterdata.usuarioms.service.UsuarioService;
+import br.com.alterdata.usuarioms.view.model.UsuarioModeloResponse;
 
 @RestController
-@RequestMapping("/api/setores")
-public class SetorController {
+@RequestMapping("/api/usuarios")
+public class UsuarioController {
     @Autowired
-    private SetorService service;
+    private UsuarioService service;
 
     @PostMapping
-    public ResponseEntity<SetorModeloResponse> criarSetor(@RequestBody @Valid SetorModeloResponse setores) {
+    public ResponseEntity<UsuarioModeloResponse> criarUsuario(@RequestBody @Valid UsuarioModeloResponse usuarios) {
         ModelMapper mapper = new ModelMapper();
-        SetorDto dto = mapper.map(setores, SetorDto.class);
-        dto = service.cadastrarSetor(dto);
-        return new ResponseEntity<>(mapper.map(dto, SetorModeloResponse.class), HttpStatus.CREATED);
+        UsuarioDto dto = mapper.map(usuarios, UsuarioDto.class);
+        dto = service.cadastrarUsuario(dto);
+        return new ResponseEntity<>(mapper.map(dto, UsuarioModeloResponse.class), HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<SetorModeloResponse>> obterTodos() {
-        List<SetorDto> dtos = service.obterTodos();
+    public ResponseEntity<List<UsuarioModeloResponse>> obterTodos() {
+        List<UsuarioDto> dtos = service.obterTodos();
 
         if (dtos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
         ModelMapper mapper = new ModelMapper();
-        List<SetorModeloResponse> resp = dtos.stream().map(dto -> mapper.map(dto, SetorModeloResponse.class))
+        List<UsuarioModeloResponse> resp = dtos.stream().map(dto -> mapper.map(dto, UsuarioModeloResponse.class))
                 .collect(Collectors.toList());
 
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{setor}")
-    public ResponseEntity<List<SetorModeloResponse>> obterPorNome(@PathVariable String setor) {
-        Optional<SetorDto> dtos = service.obterPorNome(setor);
+    @GetMapping(value = "/nome/{usuario}")
+    public ResponseEntity<List<UsuarioModeloResponse>> obterPorNome(@PathVariable String usuario) {
+        Optional<UsuarioDto> dtos = service.obterPorNome(usuario);
 
         if(dtos.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
         ModelMapper mapper = new ModelMapper();
-        List<SetorModeloResponse> resp = dtos.stream()
-                    .map(dto -> mapper.map(dto, SetorModeloResponse.class))
+        List<UsuarioModeloResponse> resp = dtos.stream()
+                    .map(dto -> mapper.map(dto, UsuarioModeloResponse.class))
                     .collect(Collectors.toList());
 
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")
-    public ResponseEntity<SetorModeloResponse> obterPorId(@PathVariable Integer id) {
-        Optional<SetorDto> setor = service.obterPorId(id);
+    public ResponseEntity<UsuarioModeloResponse> obterPorId(@PathVariable Integer id) {
+        Optional<UsuarioDto> usuario = service.obterPorId(id);
 
-        if(setor.isPresent()) {
+        if(usuario.isPresent()) {
             return new ResponseEntity<>(
-                new ModelMapper().map(setor.get(), SetorModeloResponse.class), 
+                new ModelMapper().map(usuario.get(), UsuarioModeloResponse.class), 
                 HttpStatus.OK
             );
         }
@@ -82,8 +82,8 @@ public class SetorController {
     }
 
     @PatchMapping(value="/{id}")
-    public ResponseEntity<Void> desativarSetor(@PathVariable Integer id) {
-        if(service.desativarSetor(id)) {
+    public ResponseEntity<Void> desativarUsuario(@PathVariable Integer id) {
+        if(service.desativarUsuario(id)) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
 

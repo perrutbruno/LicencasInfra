@@ -9,5 +9,6 @@ public interface SetorService {
     SetorDto cadastrarSetor(SetorDto dto);
     List<SetorDto> obterTodos();
     Optional<SetorDto> obterPorNome(String nomeSetor);
-	Optional<SetorDto> obterPorId(Integer id);
+    Optional<SetorDto> obterPorId(Integer id);
+    boolean desativarSetor(Integer id);
 }

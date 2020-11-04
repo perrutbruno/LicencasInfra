@@ -32,7 +32,10 @@ public class ChaveLicenca {
     @JoinColumn(name = "id_produto", referencedColumnName = "id_produto")
     private Produto produto;
 
-     //#endregion
+    @Column(name = "ativo")
+    private Integer ativo;
+
+    // #endregion
     public Integer getIdChaveLicenca() {
         return idChaveLicenca;
     }
@@ -73,7 +76,14 @@ public class ChaveLicenca {
         this.produto = produto;
     }
 
+    public Integer getAtivo() {
+        return ativo;
+    }
 
-    //#endregion
-    
+    public void setAtivo(Integer ativo) {
+        this.ativo = ativo;
+    }
+
+    // #endregion
+
 }

@@ -35,6 +35,10 @@
 		{
 			"name": "atendimento-ms",
 			"path": "atendimento-ms"
+		},
+		{
+			"name": "usuario-ms",
+			"path": "usuario-ms"
 		}
 	],
 	"settings": {

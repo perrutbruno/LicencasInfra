@@ -6,6 +6,7 @@ public class ChaveLicencaDto {
     private Integer quantidade;
     private Integer qtdUso;
     private Integer idProduto;
+    private Integer ativo;
 
     //#endregion
     public Integer getIdChaveLicenca() {
@@ -46,6 +47,14 @@ public class ChaveLicencaDto {
 
     public void setIdProduto(Integer idProduto) {
         this.idProduto = idProduto;
+    }
+
+    public Integer getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Integer ativo) {
+        this.ativo = ativo;
     }
 
     //#endregion 

@@ -68,11 +68,11 @@ public class AtendimentoController {
 
     @GetMapping(value="/{id}")
     public ResponseEntity<AtendimentoModeloResponse> obterPorId(@PathVariable Integer id) {
-        Optional<AtendimentoDto> Animal = service.obterPorId(id);
+        Optional<AtendimentoDto> atendimento = service.obterPorId(id);
 
-        if(Animal.isPresent()) {
+        if(atendimento.isPresent()) {
             return new ResponseEntity<>(
-                new ModelMapper().map(Animal.get(), AtendimentoModeloResponse.class), 
+                new ModelMapper().map(atendimento.get(), AtendimentoModeloResponse.class), 
                 HttpStatus.OK
             );
         }

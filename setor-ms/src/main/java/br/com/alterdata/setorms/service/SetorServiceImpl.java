@@ -19,6 +19,7 @@ public class SetorServiceImpl implements SetorService {
 
     @Override
     public SetorDto cadastrarSetor(SetorDto setor) {
+        setor.setAtivo(1);
         return salvarSetor(setor);
     }
 
@@ -52,12 +53,25 @@ public class SetorServiceImpl implements SetorService {
 
     @Override
     public Optional<SetorDto> obterPorId(Integer id) {
-        Optional<Setor> atendimento = repoSetor.findById(id);
+        Optional<Setor> setor = repoSetor.findById(id);
 
-        if(atendimento.isPresent()) {
-            return Optional.of(new ModelMapper().map(atendimento.get(), SetorDto.class));
+        if(setor.isPresent()) {
+            return Optional.of(new ModelMapper().map(setor.get(), SetorDto.class));
         }
  
         return Optional.empty();
+    }
+
+    @Override
+    public boolean desativarSetor(Integer id) {
+        Optional<Setor> setor = repoSetor.findById(id);
+        if(setor.isPresent()) {
+            setor.get().setAtivo(0);
+            repoSetor.save(setor.get());
+
+            return true;
+        }
+
+        return false;
     }
 }

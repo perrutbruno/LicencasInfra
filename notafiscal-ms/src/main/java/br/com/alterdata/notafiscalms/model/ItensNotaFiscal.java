@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import br.com.alterdata.notafiscalms.dto.Produto;
-
 @Entity
 @Table(name = "itens_nf")
 public class ItensNotaFiscal {

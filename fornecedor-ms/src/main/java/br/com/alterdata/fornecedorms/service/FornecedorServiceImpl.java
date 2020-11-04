@@ -20,6 +20,7 @@ public class FornecedorServiceImpl implements FornecedorService {
 
     @Override
     public FornecedorDto cadastrarFornecedor(FornecedorDto fornecedor) {
+        fornecedor.setAtivo(1);
         return salvarFornecedor(fornecedor);
     }
 

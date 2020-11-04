@@ -61,6 +61,7 @@ chave text NOT NULL,
 quantidade integer NOT NULL,
 quantidade_uso integer NOT NULL,
 id_produto integer NOT NULL,
+ativo integer NOT NULL,
 FOREIGN KEY (id_produto) REFERENCES produtos (id_produto) ON DELETE CASCADE);
 
 create table ATIVACOES(
@@ -88,5 +89,13 @@ FOREIGN KEY (id_ativacao) REFERENCES ativacoes (id_ativacao) ON DELETE CASCADE,
 FOREIGN KEY (id_colaborador) REFERENCES colaboradores (id_colaborador) ON DELETE CASCADE,
 FOREIGN KEY (id_produto) REFERENCES produtos (id_produto) ON DELETE CASCADE,
 FOREIGN KEY (id_setor) REFERENCES setores (id_setor) ON DELETE CASCADE);
+
+create table USUARIOS(
+id_usuario SERIAL CONSTRAINT pk_id_usuario PRIMARY KEY,
+codigo_usuario integer NOT NULL,
+nome_usuario varchar(40) NOT NULL,
+login_usu varchar(40) NOT NULL,
+sen_usu varchar(40) NOT NULL,
+ativo integer NOT NULL);
 
 */

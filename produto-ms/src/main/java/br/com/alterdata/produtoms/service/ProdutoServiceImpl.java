@@ -18,6 +18,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 
     @Override
     public ProdutoDto cadastrarProduto(ProdutoDto produto) {
+        produto.setAtivo(1);
         return salvarProduto(produto);
     }
 

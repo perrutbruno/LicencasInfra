@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.alterdata.notafiscalms.dto.NotaFiscalDto;
-import br.com.alterdata.notafiscalms.dto.Produto;
 import br.com.alterdata.notafiscalms.model.NotaFiscal;
 import br.com.alterdata.notafiscalms.repository.NotaFiscalRepositorio;
 
