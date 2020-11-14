@@ -7,6 +7,8 @@ public class ChaveLicencaModeloResponse {
     private Integer qtdUso;
     private Integer idProduto;
     private Integer ativo;
+    private Integer qtdAtivacaoPermitida;
+    private Integer qtdAtivacaoRealizada;
 
     //#endregion
     public Integer getIdChaveLicenca() {
@@ -55,6 +57,22 @@ public class ChaveLicencaModeloResponse {
 
     public void setAtivo(Integer ativo) {
         this.ativo = ativo;
+    }
+
+    public Integer getQtdAtivacaoPermitida() {
+        return qtdAtivacaoPermitida;
+    }
+
+    public void setQtdAtivacaoPermitida(Integer qtdAtivacaoPermitida) {
+        this.qtdAtivacaoPermitida = qtdAtivacaoPermitida;
+    }
+
+    public Integer getQtdAtivacaoRealizada() {
+        return qtdAtivacaoRealizada;
+    }
+
+    public void setQtdAtivacaoRealizada(Integer qtdAtivacaoRealizada) {
+        this.qtdAtivacaoRealizada = qtdAtivacaoRealizada;
     }
 
     //#endregion 

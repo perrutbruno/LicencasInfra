@@ -60,6 +60,8 @@ id_chave_licenca SERIAL CONSTRAINT pk_id_chave_licenca PRIMARY KEY,
 chave text NOT NULL,
 quantidade integer NOT NULL,
 quantidade_uso integer NOT NULL,
+qtd_ativacao_permitida integer NOT NULL,
+qtd_ativacao_realizada NOT NULL,
 id_produto integer NOT NULL,
 ativo integer NOT NULL,
 FOREIGN KEY (id_produto) REFERENCES produtos (id_produto) ON DELETE CASCADE);
@@ -78,15 +80,12 @@ nome_colaborador varchar(50) NOT NULL);
 
 create table LICENCIAMENTOS(
 id_licenciamento SERIAL CONSTRAINT pk_id_licenciamento PRIMARY KEY,
-data_cadastro date NOT NULL,
 maquina varchar(20) NOT NULL,
 tipo_maquina varchar(30) NOT NULL,
-id_ativacao integer NOT NULL,
-id_colaborador integer NOT NULL,
+usuario varchar(30) NOT NULL,
+observacao varchar (100) NULL,
 id_produto integer NOT NULL,
 id_setor integer NOT NULL,
-FOREIGN KEY (id_ativacao) REFERENCES ativacoes (id_ativacao) ON DELETE CASCADE,
-FOREIGN KEY (id_colaborador) REFERENCES colaboradores (id_colaborador) ON DELETE CASCADE,
 FOREIGN KEY (id_produto) REFERENCES produtos (id_produto) ON DELETE CASCADE,
 FOREIGN KEY (id_setor) REFERENCES setores (id_setor) ON DELETE CASCADE);
 
@@ -96,6 +95,7 @@ codigo_usuario integer NOT NULL,
 nome_usuario varchar(40) NOT NULL,
 login_usu varchar(40) NOT NULL,
 sen_usu varchar(40) NOT NULL,
+nivel integer NOT NULL,
 ativo integer NOT NULL);
 
 */

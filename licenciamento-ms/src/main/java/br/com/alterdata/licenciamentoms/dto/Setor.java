@@ -1,4 +1,4 @@
-package br.com.alterdata.chavelicencams.dto;
+package br.com.alterdata.licenciamentoms.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,23 +8,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "produtos")
-public class Produto {
+@Table(name = "setores")
+public class Setor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_produto")
-    private Integer idProduto;
+    @Column(name = "id_setor")
+    private Integer idSetor;
 
-    
+
     //#region Get / Set
-    public Integer getIdProduto() {
-        return idProduto;
+    public Integer getIdSetor() {
+        return idSetor;
     }
 
-    public void setIdProduto(Integer idProduto) {
-        this.idProduto = idProduto;
+    public void setIdSetor(Integer idSetor) {
+        this.idSetor = idSetor;
     }
 
-    
     //#endregion
 }

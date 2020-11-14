@@ -28,6 +28,12 @@ public class ChaveLicenca {
     @Column(name = "quantidade_uso")
     private Integer qtdUso;
 
+    @Column(name = "qtd_ativacao_permitida")
+    private Integer qtdAtivacaoPermitida;
+
+    @Column(name = "qtd_ativacao_realizada")
+    private Integer qtdAtivacaoRealizada;
+
     @ManyToOne
     @JoinColumn(name = "id_produto", referencedColumnName = "id_produto")
     private Produto produto;
@@ -82,6 +88,22 @@ public class ChaveLicenca {
 
     public void setAtivo(Integer ativo) {
         this.ativo = ativo;
+    }
+
+    public Integer getQtdAtivacaoPermitida() {
+        return qtdAtivacaoPermitida;
+    }
+
+    public void setQtdAtivacaoPermitida(Integer qtdAtivacaoPermitida) {
+        this.qtdAtivacaoPermitida = qtdAtivacaoPermitida;
+    }
+
+    public Integer getQtdAtivacaoRealizada() {
+        return qtdAtivacaoRealizada;
+    }
+
+    public void setQtdAtivacaoRealizada(Integer qtdAtivacaoRealizada) {
+        this.qtdAtivacaoRealizada = qtdAtivacaoRealizada;
     }
 
     // #endregion

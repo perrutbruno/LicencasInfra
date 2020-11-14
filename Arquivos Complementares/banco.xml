@@ -63,7 +63,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id_fornecedor</part>
 </key>
 </table>
-<table x="490" y="389" name="SETORES">
+<table x="490" y="467" name="SETORES">
 <row name="id_setor" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -178,6 +178,12 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <row name="quantidade_uso" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="qtd_ativacao_permitida" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="qtd_ativacao_realizada" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id_chave_licenca</part>
 </key>
@@ -208,15 +214,7 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <part>id</part>
 </key>
 </table>
-<table x="251" y="275" name="COLABORADORES">
-<row name="id_colaborador" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id_colaborador</part>
-</key>
-</table>
-<table x="448" y="184" name="LICENCIAMENTO">
+<table x="445" y="256" name="LICENCIAMENTO">
 <row name="id_licenciamento" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="ATIVACOES" row="id_licenciamento" />
@@ -225,49 +223,39 @@ https://ondras.zarovi.cz/sql/demo/?keyword=default
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="PRODUTOS" row="id_produto" />
 </row>
-<row name="id_colaborador" null="1" autoincrement="0">
+<row name="usuario" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="COLABORADORES" row="id_colaborador" />
-</row>
-<row name="id_setor" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="SETORES" row="id_setor" />
-</row>
+<default>NULL</default></row>
 <row name="maquina" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="tipo_maquina" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="data_cadastro" null="1" autoincrement="0">
+<row name="id_setor" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="SETORES" row="id_setor" />
+</row>
+<key type="PRIMARY" name="">
+<part>id_licenciamento</part>
+</key>
+</table>
+<table x="679" y="303" name="ATIVACOES">
+<row name="id_ativacao" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="id_licenciamento" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="atendimento" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="data_ativacao" null="1" autoincrement="0">
 <datatype>DATE</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id_licenciamento</part>
-</key>
-</table>
-<table x="651" y="423" name="ATENDIMENTOS">
-<row name="id_atendimento" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="numero_atendimento" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id_atendimento</part>
-</key>
-</table>
-<table x="679" y="303" name="ATIVACOES">
-<row name="id_licenciamento" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="id_atendimento" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="ATENDIMENTOS" row="id_atendimento" />
-</row>
-<key type="PRIMARY" name="">
-<part>id_licenciamento</part>
-<part>id_atendimento</part>
+<part>id_ativacao</part>
 </key>
 </table>
 </sql>

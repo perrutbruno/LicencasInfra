@@ -33,12 +33,16 @@
 			"path": "chavelicenca-ms"
 		},
 		{
-			"name": "atendimento-ms",
-			"path": "atendimento-ms"
-		},
-		{
 			"name": "usuario-ms",
 			"path": "usuario-ms"
+		},
+		{
+			"name": "licenciamento-ms",
+			"path": "licenciamento-ms"
+		},
+		{
+			"name": "ativacao-ms",
+			"path": "ativacao-ms"
 		}
 	],
 	"settings": {

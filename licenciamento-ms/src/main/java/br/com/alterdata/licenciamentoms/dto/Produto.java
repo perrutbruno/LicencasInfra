@@ -1,4 +1,4 @@
-package br.com.alterdata.chavelicencams.dto;
+package br.com.alterdata.licenciamentoms.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +15,7 @@ public class Produto {
     @Column(name = "id_produto")
     private Integer idProduto;
 
-    
+
     //#region Get / Set
     public Integer getIdProduto() {
         return idProduto;
@@ -25,6 +25,5 @@ public class Produto {
         this.idProduto = idProduto;
     }
 
-    
     //#endregion
 }

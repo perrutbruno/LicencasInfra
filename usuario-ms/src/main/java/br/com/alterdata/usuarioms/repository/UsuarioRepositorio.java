@@ -9,6 +9,7 @@ import br.com.alterdata.usuarioms.model.Usuario;
 public interface UsuarioRepositorio extends JpaRepository<Usuario, Integer> {
 
 	Optional<Usuario> findByNome(String nome);
+	Optional<Usuario> findByLogin(String login); 
 	Optional<Usuario> findById(Integer id);
     
 }
