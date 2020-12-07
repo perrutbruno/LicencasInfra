@@ -1,0 +1,147 @@
+* {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+p {
+    text-align: justify;
+}
+
+.centralizado {
+    text-align: center;
+}
+
+
+.div-menu-principal{
+    background-color: #000000a5;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    width: 100%;
+}
+h4{
+    padding: 0.4em;
+    margin: 0;
+}
+
+li{
+    margin-right: 2em; 
+}
+
+hr {
+    margin: 0;
+    padding: 0;
+}
+.login{
+    width: 320px;
+    height: 420;
+    border: 2px solid #000;
+    border-radius: 80px 0px 80px 0px;
+    color: #ffffff;
+    background-color:#000000a5;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 68px 28px;
+}
+
+.logo{
+    border-radius: 50%;
+    position: absolute;
+    top: -10%;
+    left: 112px;
+    border: 2px solid #000;
+}
+
+body {
+    font-family: "Roboto Condensed", Helvetica, sans-serif;
+    background-color: #f7f7f7;
+}
+.container { margin: 150px auto; max-width: 960px; }
+a {
+
+    text-decoration: none;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+table, th, td {
+   border: 1px solid #bbb;
+   text-align: left;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+th {
+    background-color: #ddd;
+}
+th,td {
+    padding: 5px;
+}
+button {
+    cursor: pointer;
+}
+/*Initial style sort*/
+.tablemanager th.sorterHeader {
+    cursor: pointer;
+}
+.tablemanager th.sorterHeader:after {
+    content: " \f0dc";
+    font-family: "FontAwesome";
+}
+/*Style sort desc*/
+.tablemanager th.sortingDesc:after {
+    content: " \f0dd";
+    font-family: "FontAwesome";
+}
+/*Style sort asc*/
+.tablemanager th.sortingAsc:after {
+    content: " \f0de";
+    font-family: "FontAwesome";
+}
+/*Style disabled*/
+.tablemanager th.disableSort {
+
+}
+#for_numrows {
+    padding: 10px;
+    float: left;
+}
+#for_filter_by {
+    padding: 10px;
+    float: right;
+}
+#pagesControllers {
+    display: block;
+    text-align: center;
+}
+
+.editar{
+    width: 30px;
+    height:30px;
+    background-image: url(../../img/editar.png); 
+    position: absolute;
+}
+
+.excluir{
+    width: 30px;
+    height:30px;
+    background-image: url(../../img/excluir.png); 
+    position: absolute;
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+.incluir{
+    width: 30px;
+    height:30px;
+    background-image: url(../../img/incluir.png);
+    position: absolute; 
+}
