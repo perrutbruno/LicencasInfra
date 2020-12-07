@@ -43,6 +43,9 @@
 		{
 			"name": "ativacao-ms",
 			"path": "ativacao-ms"
+		},
+		{
+			"path": "front\\licenciamento-front"
 		}
 	],
 	"settings": {
