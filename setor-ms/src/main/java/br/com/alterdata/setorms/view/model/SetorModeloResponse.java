@@ -4,7 +4,7 @@ public class SetorModeloResponse {
     private Integer idSetor;
     private Integer codigoSetor;
     private String nomeSetor;
-    private Integer ativo;
+    private Boolean ativo;
 
     //#region Get / Set
     public Integer getIdSetor() {
@@ -31,13 +31,15 @@ public class SetorModeloResponse {
         this.nomeSetor = nomeSetor;
     }
 
-    public Integer getAtivo() {
+    public Boolean getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(Integer ativo) {
+    public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
     }
+
+
 
     //#endregion
 }

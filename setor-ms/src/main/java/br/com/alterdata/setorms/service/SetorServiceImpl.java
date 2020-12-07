@@ -19,7 +19,7 @@ public class SetorServiceImpl implements SetorService {
 
     @Override
     public SetorDto cadastrarSetor(SetorDto setor) {
-        setor.setAtivo(1);
+        setor.setAtivo(true);
         return salvarSetor(setor);
     }
 
@@ -63,15 +63,17 @@ public class SetorServiceImpl implements SetorService {
     }
 
     @Override
-    public boolean desativarSetor(Integer id) {
-        Optional<Setor> setor = repoSetor.findById(id);
-        if(setor.isPresent()) {
-            setor.get().setAtivo(0);
-            repoSetor.save(setor.get());
-
-            return true;
-        }
-
-        return false;
+    public Setor atualizaSetor(Integer id, Setor setor) {
+        setor.setIdSetor(id);
+        return repoSetor.save(setor);
     }
+
+    @Override
+    public void removerSetor(Integer id) {
+        Setor setor = new Setor();
+        setor.setIdSetor(id);
+
+        repoSetor.delete(setor);
+    }
+
 }

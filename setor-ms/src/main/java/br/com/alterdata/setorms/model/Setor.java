@@ -21,15 +21,15 @@ public class Setor {
     private String nomeSetor;
 
     @Column(name = "ativo")
-    private Integer ativo;
+    private Boolean ativo;
 
     //#region Get / Set
     public Integer getIdSetor() {
         return idSetor;
     }
 
-    public void setIdSetor(Integer idSetor) {
-        this.idSetor = idSetor;
+    public void setIdSetor(Integer id) {
+        this.idSetor = id;
     }
 
     public Integer getCodigoSetor() {
@@ -48,13 +48,14 @@ public class Setor {
         this.nomeSetor = nomeSetor;
     }
 
-    public Integer getAtivo() {
+    public Boolean getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(Integer ativo) {
+    public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
     }
+
 
     //#endregion
 
