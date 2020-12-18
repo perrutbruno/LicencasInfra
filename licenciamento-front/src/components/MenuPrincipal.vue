@@ -29,8 +29,8 @@
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                   <router-link to="/Listar/Setor" class="dropdown-item">- Setores</router-link>
                   <router-link to="/Cadastro/Fornecedores" class="dropdown-item">- Fornecedores</router-link>
-                  <router-link to="/Cadastro/Produtos" class="dropdown-item">- Produtos</router-link>
-                  <router-link to="/Cadastro/Usuarios" class="dropdown-item">- Usuários</router-link>
+                  <router-link to="/Listar/Produto" class="dropdown-item">- Produtos</router-link>
+                  <router-link to="/Listar/Usuario" class="dropdown-item">- Usuários</router-link>
                 </div>
               </li>
 

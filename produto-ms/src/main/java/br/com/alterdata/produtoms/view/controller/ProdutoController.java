@@ -9,14 +9,18 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.alterdata.produtoms.dto.ProdutoDto;
+import br.com.alterdata.produtoms.model.Produto;
 import br.com.alterdata.produtoms.service.ProdutoService;
 import br.com.alterdata.produtoms.view.model.ProdutoModeloResponse;
 
@@ -26,6 +30,7 @@ public class ProdutoController {
     @Autowired
     private ProdutoService service;
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<ProdutoModeloResponse> criarProduto(@RequestBody @Valid ProdutoModeloResponse produto) {
         ModelMapper mapper = new ModelMapper();
@@ -34,6 +39,7 @@ public class ProdutoController {
         return new ResponseEntity<>(mapper.map(dto, ProdutoModeloResponse.class), HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<List<ProdutoModeloResponse>> obterTodos() {
         List<ProdutoDto> dtos = service.obterTodos();
@@ -50,6 +56,7 @@ public class ProdutoController {
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping("/{idproduto}")
     public ResponseEntity<List<ProdutoModeloResponse>> obterProdutosNotaFiscal(@RequestBody @Valid ProdutoModeloResponse produto, @PathVariable List<Integer> idproduto) {
         List<ProdutoDto> dtos = service.obterProdutosNotaFiscal(idproduto);
@@ -65,4 +72,18 @@ public class ProdutoController {
 
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
+
+    @CrossOrigin
+    @PutMapping(value="/{id}")
+    public ResponseEntity<Produto> atualizarProduto(@PathVariable Integer id, @RequestBody Produto produto) {
+        return new ResponseEntity<>(service.atualizaProduto(id, produto), HttpStatus.OK);
+        
+    }
+
+    @CrossOrigin
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity<Void> removerProduto(@PathVariable Integer id) {
+        service.removerProduto(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }  
 }

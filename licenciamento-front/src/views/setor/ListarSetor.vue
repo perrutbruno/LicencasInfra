@@ -4,7 +4,7 @@
 
     <pagina-base subtitulo="» Listagem de Setores">
       <hr />
-        <h5><router-link to="/Cadastro/Setores"><img src="/img/incluir.png">Adicionar Setor</router-link></h5>
+        <h5><router-link to="/Cadastro/Setor"><img src="/img/incluir.png">Adicionar Setor</router-link></h5>
       <br>
       <jw-pagination
         :items="setores"

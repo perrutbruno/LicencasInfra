@@ -48,4 +48,18 @@ public class ProdutoServiceImpl implements ProdutoService {
             .map(produto -> new ModelMapper().map(produto, ProdutoDto.class))
             .collect(Collectors.toList());
     }
+
+    @Override
+    public Produto atualizaProduto(Integer id, Produto produto) {
+        produto.setIdProduto(id);
+        return repoProduto.save(produto);
+    }
+
+    @Override
+    public void removerProduto(Integer id) {
+        Produto produto = new Produto();
+        produto.setIdProduto(id);
+
+        repoProduto.delete(produto);
+    }
 }

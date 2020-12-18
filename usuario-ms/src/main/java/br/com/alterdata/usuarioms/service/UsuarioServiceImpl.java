@@ -75,4 +75,18 @@ public class UsuarioServiceImpl implements UsuarioService{
 
         return false;
     }
+
+    @Override
+    public Usuario atualizaUsuario(Integer id, Usuario usuario) {
+        usuario.setIdUsuario(id);
+        return repoUsuario.save(usuario);
+    }
+
+    @Override
+    public void removerUsuario(Integer id) {
+        Usuario usuario = new Usuario();
+        usuario.setIdUsuario(id);
+
+        repoUsuario.delete(usuario);
+    }
 }

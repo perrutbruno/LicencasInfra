@@ -10,15 +10,19 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.alterdata.usuarioms.dto.UsuarioDto;
+import br.com.alterdata.usuarioms.model.Usuario;
 import br.com.alterdata.usuarioms.service.UsuarioService;
 import br.com.alterdata.usuarioms.view.model.UsuarioModeloResponse;
 
@@ -28,6 +32,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioService service;
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<UsuarioModeloResponse> criarUsuario(@RequestBody @Valid UsuarioModeloResponse usuarios) {
         ModelMapper mapper = new ModelMapper();
@@ -36,6 +41,7 @@ public class UsuarioController {
         return new ResponseEntity<>(mapper.map(dto, UsuarioModeloResponse.class), HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<List<UsuarioModeloResponse>> obterTodos() {
         List<UsuarioDto> dtos = service.obterTodos();
@@ -51,6 +57,7 @@ public class UsuarioController {
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(value = "/nome/{usuario}")
     public ResponseEntity<List<UsuarioModeloResponse>> obterPorNome(@PathVariable String usuario) {
         Optional<UsuarioDto> dtos = service.obterPorNome(usuario);
@@ -67,6 +74,7 @@ public class UsuarioController {
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(value="/{id}")
     public ResponseEntity<UsuarioModeloResponse> obterPorId(@PathVariable Integer id) {
         Optional<UsuarioDto> usuario = service.obterPorId(id);
@@ -81,6 +89,7 @@ public class UsuarioController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @CrossOrigin
     @PatchMapping(value="/{id}")
     public ResponseEntity<Void> desativarUsuario(@PathVariable Integer id) {
         if(service.desativarUsuario(id)) {
@@ -89,4 +98,18 @@ public class UsuarioController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @CrossOrigin
+    @PutMapping(value="/{id}")
+    public ResponseEntity<Usuario> atualizarUsuario(@PathVariable Integer id, @RequestBody Usuario usuario) {
+        return new ResponseEntity<>(service.atualizaUsuario(id, usuario), HttpStatus.OK);
+        
+    }
+
+    @CrossOrigin
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity<Void> removerUsuario(@PathVariable Integer id) {
+        service.removerUsuario(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }   
 }

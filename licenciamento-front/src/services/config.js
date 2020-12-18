@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const http = axios.create({
-baseURL: 'http://localhost:8011/setor-ms/api/',
+baseURL: 'http://localhost:8011/',
 withCredentials: false,
 Headers: {
 "Access-Control-Allow-Origin" : "*",

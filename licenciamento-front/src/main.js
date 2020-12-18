@@ -14,7 +14,48 @@ Object.keys(rules).forEach(rule => {
   extend(rule, {
     ...rules[rule], // copies rule configuration
     message: messages[rule] // assign message
-  });
+  }),
+  extend('velho', {
+    validate(value, {password}){
+      return{
+        valid: (value < password)
+      }
+    },
+    params: ['password'],
+    message: 'Esse cara é muito velho.'
+  }),
+
+  extend('upCase',{
+    validate(value){
+      return{
+        valid: (value.match(/[A-Z]/g) !== null)
+      }
+    },
+    params: ['password'],
+    message: 'É necessário uma letra em maiusculo.'
+  }),
+
+  extend('number',{
+    validate(value){
+      return{
+        valid: (value.match(/[0-9]/g) !== null)
+      }
+    },
+    params: ['password'],
+    message: 'É necessário um número.'
+  }),
+
+  extend('especial',{
+    validate(value){
+      return{
+        valid: (value.match(/[!@#$%^&*?]/g) !== null)
+      }
+    },
+    params: ['password'],
+    message: 'É necessário um caractere especial.'
+  })
+
+
 });
 
 
