@@ -1,6 +1,7 @@
 package br.com.alterdata.produtoms.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -18,7 +19,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 
     @Override
     public ProdutoDto cadastrarProduto(ProdutoDto produto) {
-        produto.setAtivo(1);
+        produto.setAtivo(true);
         return salvarProduto(produto);
     }
 
@@ -40,6 +41,18 @@ public class ProdutoServiceImpl implements ProdutoService {
             .collect(Collectors.toList());
     }
 
+    @Override
+    public Optional<ProdutoDto> obterPorId(Integer id) {
+        Optional<Produto> produto = repoProduto.findById(id);
+
+        if(produto.isPresent()) {
+            return Optional.of(new ModelMapper().map(produto.get(), ProdutoDto.class));
+        }
+ 
+        return Optional.empty();
+    }
+
+    
     @Override
     public List<ProdutoDto> obterProdutosNotaFiscal(List<Integer> id) {
         List<Produto> produtos = repoProduto.findByIdProdutoIn(id);

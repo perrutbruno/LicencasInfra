@@ -26,7 +26,7 @@ public class Fornecedor {
     private String cnpjFornecedor;
 
     @Column(name = "ativo")
-    private Integer ativo;
+    private Boolean ativo;
 
     
 
@@ -63,14 +63,16 @@ public class Fornecedor {
 	public void setCnpjFornecedor(String cnpjFornecedor) {
 		this.cnpjFornecedor = cnpjFornecedor;
     }
-    
-	public Integer getAtivo() {
-		return ativo;
+
+    public Boolean getAtivo() {
+      return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+      this.ativo = ativo;
     }
     
-	public void setAtivo(Integer ativo) {
-		this.ativo = ativo;
-	}
+
     //#endregion
 
 

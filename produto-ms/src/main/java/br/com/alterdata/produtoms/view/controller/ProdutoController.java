@@ -1,6 +1,7 @@
 package br.com.alterdata.produtoms.view.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -57,7 +58,22 @@ public class ProdutoController {
     }
 
     @CrossOrigin
-    @GetMapping("/{idproduto}")
+    @GetMapping(value="/{id}")
+    public ResponseEntity<ProdutoModeloResponse> obterPorId(@PathVariable Integer id) {
+        Optional<ProdutoDto> produto = service.obterPorId(id);
+
+        if(produto.isPresent()) {
+            return new ResponseEntity<>(
+                new ModelMapper().map(produto.get(), ProdutoModeloResponse.class), 
+                HttpStatus.OK
+            );
+        }
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @CrossOrigin
+    @GetMapping("/Itens/{idproduto}")
     public ResponseEntity<List<ProdutoModeloResponse>> obterProdutosNotaFiscal(@RequestBody @Valid ProdutoModeloResponse produto, @PathVariable List<Integer> idproduto) {
         List<ProdutoDto> dtos = service.obterProdutosNotaFiscal(idproduto);
 
@@ -72,6 +88,7 @@ public class ProdutoController {
 
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
+
 
     @CrossOrigin
     @PutMapping(value="/{id}")

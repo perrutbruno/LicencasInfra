@@ -31,7 +31,7 @@ public class Usuario {
     private Integer nivel;
 
     @Column(name = "ativo")
-    private Integer ativo;
+    private Boolean ativo;
 
     //#region Get/Set
     public Integer getIdUsuario() {
@@ -66,14 +66,6 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public Integer getAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(Integer ativo) {
-        this.ativo = ativo;
-    }
-
     public Integer getCodigoUsuario() {
         return codigoUsuario;
     }
@@ -88,6 +80,14 @@ public class Usuario {
 
     public void setNivel(Integer nivel) {
         this.nivel = nivel;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 
     //#endregion

@@ -8,7 +8,7 @@ public class ProdutoDto {
     private String versaoProduto;
     private String descricaoProduto;
     private String observacaoProduto;
-    private Integer ativo;
+    private Boolean ativo;
 
     //#region Get / Set
     public Integer getIdProduto() {
@@ -67,13 +67,14 @@ public class ProdutoDto {
         this.observacaoProduto = observacaoProduto;
     }
 
-    public Integer getAtivo() {
+    public Boolean getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(Integer ativo) {
+    public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
     }
+
 
     //#endregion
 }

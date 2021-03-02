@@ -34,7 +34,7 @@ public class Produto {
     private String observacaoProduto;
 
     @Column(name = "ativo")
-    private Integer ativo;
+    private Boolean ativo;
 
 
 
@@ -96,13 +96,15 @@ public class Produto {
         this.observacaoProduto = observacaoProduto;
     }
 
-    public Integer getAtivo() {
+    public Boolean getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(Integer ativo) {
+    public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
     }
+
+
     //#endregion
 
 

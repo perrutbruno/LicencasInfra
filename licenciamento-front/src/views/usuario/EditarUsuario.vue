@@ -58,13 +58,13 @@
       </ValidationProvider>
 
       <ValidationProvider name="ativo" v-slot= "{ errors }">
-      <div class="form-group" v-if="setor.ativo == 1">
-         <input type="checkbox" value = 1 v-model="setor.ativo" name="ativo"/>
+      <div class="form-group" v-if="usuario.ativo == 1">
+         <input type="checkbox" value = 1 v-model="usuario.ativo" name="ativo"/>
         <span> Ativado. Desmarque e clique em 'Salvar' para desativar.</span>
         <span class="erro">{{errors[0]}}</span>
       </div>   
       <div class="form-group" v-else >
-        <input type="checkbox" value = 0 v-model="setor.ativo" name="ativo"/>
+        <input type="checkbox" value = 0 v-model="usuario.ativo" name="ativo"/>
         <span> Desativado. Marque e clique em 'Salvar' para ativar.</span>
         <span class="erro">{{errors[0]}}</span>
       </div>  

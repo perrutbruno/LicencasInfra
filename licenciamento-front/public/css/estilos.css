@@ -145,3 +145,11 @@ button {
     background-image: url(../../img/incluir.png);
     position: absolute; 
 }
+
+.labelDetalhe{
+    padding-left: 10px;
+}
+
+.labelLegenda{
+    font-weight: bold;
+}

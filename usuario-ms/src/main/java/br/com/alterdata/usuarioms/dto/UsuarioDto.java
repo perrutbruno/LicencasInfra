@@ -7,7 +7,7 @@ public class UsuarioDto {
     private String senha;
     private String nome;
     private Integer nivel;
-    private Integer ativo;
+    private Boolean ativo;
 
     //#region Get/Set
     public Integer getIdUsuario() {
@@ -42,14 +42,6 @@ public class UsuarioDto {
         this.nome = nome;
     }
 
-    public Integer getAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(Integer ativo) {
-        this.ativo = ativo;
-    }
-
     public Integer getCodigoUsuario() {
         return codigoUsuario;
     }
@@ -64,6 +56,14 @@ public class UsuarioDto {
 
     public void setNivel(Integer nivel) {
         this.nivel = nivel;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 
     //#endregion

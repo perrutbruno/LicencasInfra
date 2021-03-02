@@ -18,6 +18,7 @@
           <tr>
             <th>Código</th>
             <th>Nome</th>
+            <th>Versão</th>
             <th>Ativo</th>
             <th>Opções</th>
           </tr>
@@ -26,7 +27,8 @@
           <!-- <tr v-for="s in setores" :key="s.idSetor">-->
           <tr v-for="produto in pageOfItems" :key="produto.idProduto">
             <td>{{ produto.codigoProduto }}</td>
-            <td>{{ produto.nomeProduto }}</td>
+            <td><router-link :to="`/Detalhe/Produto/${produto.idProduto}`">{{ produto.nomeProduto }}</router-link></td>
+            <td>{{ produto.versaoProduto }}</td>
             <td v-if="produto.ativo == true">Sim</td>
             <td v-else>Não</td>
             <td>

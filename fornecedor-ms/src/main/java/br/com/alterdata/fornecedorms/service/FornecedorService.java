@@ -10,12 +10,14 @@ public interface FornecedorService {
 
     FornecedorDto cadastrarFornecedor(FornecedorDto dto);
     
-    FornecedorDto alterarFornecedor(Integer id, FornecedorDto dto);
+    Fornecedor atualizaFornecedor(Integer id, Fornecedor fornecedor);
 
     List<FornecedorDto> obterTodos();
     
-    Fornecedor obterPorId(Integer id, FornecedorDto dto);
+    Optional<FornecedorDto> obterPorId(Integer id);
 
     Optional<FornecedorDto> obterPorNome(String nomeFornecedor);
-    
+
+	void removerFornecedor(Integer id);
+
 }

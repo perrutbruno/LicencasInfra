@@ -20,7 +20,7 @@ public class FornecedorServiceImpl implements FornecedorService {
 
     @Override
     public FornecedorDto cadastrarFornecedor(FornecedorDto fornecedor) {
-        fornecedor.setAtivo(1);
+        fornecedor.setAtivo(true);
         return salvarFornecedor(fornecedor);
     }
 
@@ -35,12 +35,6 @@ public class FornecedorServiceImpl implements FornecedorService {
 
 
     @Override
-    public FornecedorDto alterarFornecedor(Integer id, FornecedorDto fornecedor) {
-        fornecedor.setIdFornecedor(id);
-        return salvarFornecedor(fornecedor);
-    }
-
-    @Override
     public List<FornecedorDto> obterTodos() {
         List<Fornecedor> fornecedores = repoFornecedor.findAll();
 
@@ -50,10 +44,14 @@ public class FornecedorServiceImpl implements FornecedorService {
     }
 
     @Override
-    public Fornecedor obterPorId(Integer id, FornecedorDto fornecedor) {
-        Fornecedor fornecedores = repoFornecedor.getOne(id);
+    public Optional<FornecedorDto> obterPorId(Integer id) {
+        Optional<Fornecedor> fornecedor = repoFornecedor.findById(id);
 
-        return fornecedores;
+        if(fornecedor.isPresent()) {
+            return Optional.of(new ModelMapper().map(fornecedor.get(), FornecedorDto.class));
+        }
+ 
+        return Optional.empty();
     }
 
     @Override
@@ -65,4 +63,20 @@ public class FornecedorServiceImpl implements FornecedorService {
  
         return Optional.empty();
     }
+
+    @Override
+    public Fornecedor atualizaFornecedor(Integer id, Fornecedor fornecedor) {
+        fornecedor.setIdFornecedor(id);
+        return repoFornecedor.save(fornecedor);
+    }
+
+    @Override
+    public void removerFornecedor(Integer id) {
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor.setIdFornecedor(id);
+
+        repoFornecedor.delete(fornecedor);
+    }
+
+
 }

@@ -3,29 +3,75 @@
 
     <menu-principal></menu-principal>
     
-    <pagina-base subtitulo="» Editar: Setor">
+    <pagina-base subtitulo="» Editar: produto">
     <hr>
     <br/>
-    <form>
+    <ValidationObserver >
+    <form @submit.prevent="onSubmit">
+     <ValidationProvider name="Codigo" rules="required|numeric|max:4" v-slot= "{ errors }">
       <div class="form-group">
-        <label for="codigo">Código do Setor:</label>
-        <input type="text" class="form-control"  v-model="setor.codigoSetor"/>
+        <label for="Codigo">Código do Produto:</label>
+        <input type="text" class="form-control" v-model="produto.codigoProduto"/>
+        <span class="erro">{{errors[0]}}</span>
       </div>
+      </ValidationProvider>
+
+      <ValidationProvider name="Nome" rules="required|min:2|max:100" v-slot= "{ errors }">
       <div class="form-group">
-        <label for="nome">Nome do Setor:</label>
-        <input type="text" class="form-control" v-model="setor.nomeSetor"/>
-      </div>  
-      <div class="form-group" v-if="setor.ativo == 1">
-         <input type="checkbox" value = 1 v-model="setor.ativo"/>
-        <span> Ativado. Desmarque e clique em 'Salvar' para desativar.</span>
-      </div>   
-      <div class="form-group" v-else>
-        <input type="checkbox" value = 0 v-model="setor.ativo"/>
-        <span> Desativado. Marque e clique em 'Salvar' para ativar.</span>
+        <label for="Nome">Nome do Produto:</label>
+        <input type="text" class="form-control" v-model="produto.nomeProduto" maxlength="100"/>
+        <span class="erro">{{errors[0]}}</span>
       </div>      
+      </ValidationProvider>  
+
+      <ValidationProvider name="Versao" rules="required" v-slot= "{ errors }">
+      <div class="form-group">
+        <label for="Versao">Versão do produto:</label>
+        <input type="text" class="form-control" v-model="produto.versaoProduto"/>
+        <span class="erro">{{errors[0]}}</span>
+      </div>  
+      </ValidationProvider> 
+
+      <ValidationProvider name="Modelo" rules="required" v-slot= "{ errors }">
+      <div class="form-group">
+        <label for="Modelo">Modelo do produto:</label>
+        <input type="text" class="form-control" v-model="produto.modeloProduto"/>
+        <span class="erro">{{errors[0]}}</span>
+      </div> 
+      </ValidationProvider>  
+
+      <ValidationProvider name="Descricao" rules="max:100" v-slot= "{ errors }">
+      <div class="form-group">
+        <label for="Descricao">Descrição do produto:</label>
+        <input type="text" class="form-control" v-model="produto.descricaoProduto"/>
+        <span class="erro">{{errors[0]}}</span>
+      </div>   
+      </ValidationProvider>   
+
+      <ValidationProvider name="Observacao" rules="max:200" v-slot= "{ errors }">
+      <div class="form-group">
+        <label for="Observacao">Observação do produto:</label>
+        <input type="text" class="form-control" v-model="produto.observacaoProduto"/>
+        <span class="erro">{{errors[0]}}</span>
+      </div> 
+      </ValidationProvider>                 
+
+      <ValidationProvider name="ativo" v-slot= "{ errors }">
+      <div class="form-group" v-if="produto.ativo == 1">
+         <input type="checkbox" value = 1 v-model="produto.ativo" name="ativo"/>
+        <span> Ativado. Desmarque e clique em 'Salvar' para desativar.</span>
+        <span class="erro">{{errors[0]}}</span>
+      </div>   
+      <div class="form-group" v-else >
+        <input type="checkbox" value = 0 v-model="produto.ativo" name="ativo"/>
+        <span> Desativado. Marque e clique em 'Salvar' para ativar.</span>
+        <span class="erro">{{errors[0]}}</span>
+      </div>  
+      </ValidationProvider>     
      
       <button type="button" class="btn btn-primary" v-on:click="atualizar">Salvar</button>
     </form>
+    </ValidationObserver>
     <br/>
     <router-link to="/Principal">« Voltar</router-link>
 
@@ -35,36 +81,44 @@
 </template>
 
 <script>
-import dadossetor from '@/services/dadossetor';
+import dadosproduto from '@/services/dadosproduto';
 
 export default {
-  name: "EditarSetor",
+  name: "EditarProduto",
   data() {
     return {
-      setor:{
-        idSetor: "",
-        codigoSetor: "",
-        nomeSetor: "",
+      produto:{
+        idpPoduto: "",
+        codigoProduto: "",
+        nomeProduto: "",
+        modeloProduto: "",
+        versaoProduto: "",
+        descricaoProduto: "",
+        observacaoProduto: "",
         ativo: ""
       }
     };
   },
   mounted(){
-    this.idSetor = this.$route.params.idSetor;//$route é a rota atual
-    fetch(`http://localhost:8011/setor-ms/api/setores/${this.idSetor}`)
+    this.idProduto = this.$route.params.idProduto;
+    fetch(`http://localhost:8011/produto-ms/api/produtos/${this.idProduto}`)
     .then(resp => resp.json().then(json =>{
-      this.setor.codigoSetor = json.codigoSetor;
-      this.setor.nomeSetor = json.nomeSetor;
-      this.setor.ativo = json.ativo;
+      this.produto.codigoProduto = json.codigoProduto;
+      this.produto.nomeProduto = json.nomeProduto;
+      this.produto.modeloProduto = json.modeloProduto;
+      this.produto.versaoProduto = json.versaoProduto;
+      this.produto.descricaoProduto = json.descricaoProduto;
+      this.produto.observacaoProduto = json.observacaoProduto;
+      this.produto.ativo = json.ativo;
     }))
 
   },
   methods:{
     atualizar(){
-      dadossetor.alterar(this.idSetor, this.setor)
+      dadosproduto.alterar(this.idProduto, this.produto)
       .then(resp=> {
-        alert("O Setor "+resp.data.nomeSetor + " atualizado(a) com sucesso.");
-        this.$router.push({path:"/Listar/Setor"})
+        alert("O produto "+resp.data.nomeProduto + " atualizado(a) com sucesso.");
+        this.$router.push({path:"/Listar/produto"})
       })
     }
   }

@@ -5,7 +5,7 @@ public class FornecedorDto {
     private Integer codigoFornecedor;
     private String nomeFornecedor;
     private String cnpjFornecedor;
-    private Integer ativo;
+    private Boolean ativo;
 
     public Integer getIdFornecedor() {
         return idFornecedor;
@@ -39,13 +39,14 @@ public class FornecedorDto {
         this.cnpjFornecedor = cnpjFornecedor;
     }
 
-    public Integer getAtivo() {
+    public Boolean getAtivo() {
         return ativo;
-    }
-
-    public void setAtivo(Integer ativo) {
+      }
+  
+      public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
-    }
+      }
+      
 
     
 }

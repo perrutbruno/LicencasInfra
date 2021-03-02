@@ -15,6 +15,10 @@ import CadUsuario from "@/views/usuario/CadUsuario.vue";
 import ListarProduto from "@/views/produto/ListarProduto.vue";
 import EditarProduto from "@/views/produto/EditarProduto.vue";
 import CadProduto from "@/views/produto/CadProduto.vue";
+import DetalheProduto from "@/views/produto/DetalheProduto.vue";
+import EditarFornecedor from "@/views/fornecedor/EditarFornecedor.vue";
+import CadFornecedor from "@/views/fornecedor/CadFornecedor.vue";
+import ListarFornecedor from "@/views/fornecedor/ListarFornecedor.vue";
 
 Vue.use(VueRouter);
 
@@ -36,7 +40,11 @@ export default new VueRouter({
         { path: '/Editar/Usuario/:idUsuario', component: EditarUsuario },
         { path: '/Cadastro/Produto', component: CadProduto },
         { path: '/Listar/Produto', component: ListarProduto },
-        { path: '/Editar/Produto/:idProduto', component: EditarProduto }        
+        { path: '/Editar/Produto/:idProduto', component: EditarProduto },
+        { path: '/Detalhe/Produto/:idProduto', component: DetalheProduto },  
+        { path: '/Cadastro/Fornecedor', component: CadFornecedor },   
+        { path: '/Listar/Fornecedor', component: ListarFornecedor },
+        { path: '/Editar/Fornecedor/:idFornecedor', component: EditarFornecedor }        
 
     ]
 });

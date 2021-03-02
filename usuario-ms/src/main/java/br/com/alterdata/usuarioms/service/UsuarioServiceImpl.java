@@ -20,7 +20,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public UsuarioDto cadastrarUsuario(UsuarioDto usuario) {
-        usuario.setAtivo(1);
+        usuario.setAtivo(true);
         return salvarUsuario(usuario);
     }
 
@@ -67,7 +67,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     public boolean desativarUsuario(Integer id) {
         Optional<Usuario> usuario = repoUsuario.findById(id);
         if(usuario.isPresent()) {
-            usuario.get().setAtivo(0);
+            usuario.get().setAtivo(true);
             repoUsuario.save(usuario.get());
 
             return true;

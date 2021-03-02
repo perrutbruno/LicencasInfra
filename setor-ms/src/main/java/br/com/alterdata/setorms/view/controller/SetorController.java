@@ -91,7 +91,7 @@ public class SetorController {
 
     @CrossOrigin
     @PutMapping(value="/{id}")
-    public ResponseEntity<Setor> atualizarPessoa(@PathVariable Integer id, @RequestBody Setor setor) {
+    public ResponseEntity<Setor> atualizarSetor(@PathVariable Integer id, @RequestBody Setor setor) {
         return new ResponseEntity<>(service.atualizaSetor(id, setor), HttpStatus.OK);
         
     }

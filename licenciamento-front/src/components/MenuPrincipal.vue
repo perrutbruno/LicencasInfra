@@ -28,7 +28,7 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >» Cadastros Básicos</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                   <router-link to="/Listar/Setor" class="dropdown-item">- Setores</router-link>
-                  <router-link to="/Cadastro/Fornecedores" class="dropdown-item">- Fornecedores</router-link>
+                  <router-link to="/Listar/Fornecedor" class="dropdown-item">- Fornecedores</router-link>
                   <router-link to="/Listar/Produto" class="dropdown-item">- Produtos</router-link>
                   <router-link to="/Listar/Usuario" class="dropdown-item">- Usuários</router-link>
                 </div>
